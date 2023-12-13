@@ -60,6 +60,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         jButton23.setText(")");
         jButton23.setPreferredSize(new java.awt.Dimension(73, 25));
@@ -227,6 +228,14 @@ public class CalculatriceGUI extends javax.swing.JFrame {
         jTextArea2.setToolTipText("googl");
         jScrollPane2.setViewportView(jTextArea2);
 
+        jButton2.setText("Supprimer historique");
+        jButton2.setToolTipText("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerHistorique(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -279,13 +288,17 @@ public class CalculatriceGUI extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(15, 15, 15)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
@@ -331,6 +344,11 @@ public class CalculatriceGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void supprimerHistorique(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerHistorique
+        jTextArea1.setText("");
+        jButton2();
+    }//GEN-LAST:event_supprimerHistorique
 
     private void ajouterAddition(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterAddition
         jTextArea1.append("+");
@@ -465,6 +483,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
