@@ -402,7 +402,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_effacer
 
     private void ajouterDivision(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterDivision
-        // TODO add your handling code here:
+        jTextArea1.append("/");
     }//GEN-LAST:event_ajouterDivision
 
     private void ajouterAddition(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterAddition
@@ -429,8 +429,8 @@ public class CalculatriceGUI extends javax.swing.JFrame {
         jTextArea1.append(")");
     }// GEN-LAST:event_parentheseFermee
 
-    private void ajouterDivision(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterDivision
-        jTextArea1.append("/");
+    private void affecterVariable(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterDivision
+
     }// GEN-LAST:event_ajouterDivision
 
     private void ajouter8(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouter8
@@ -489,7 +489,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
         {
             jTextArea1.setText("Erreur, expression invalide: " + e.getMessage());
         }
-        jComboBox2
+        jComboBox2.getSelectedItem();
     }// GEN-LAST:event_egale
 
     /**
