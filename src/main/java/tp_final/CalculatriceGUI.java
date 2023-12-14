@@ -7,6 +7,8 @@ package tp_final;
 import interpreteur_math.IExpression;
 import interpreteur_math.IInterpreteur;
 import interpreteur_math.Interpreteur;
+import observateur.Diffuseur;
+import javax.swing.*;
 
 /**
  *
@@ -18,11 +20,15 @@ public class CalculatriceGUI extends javax.swing.JFrame {
      * Creates new form CalculatriceGUI
      */
 
-    IInterpreteur _interpreteur;
+    public IInterpreteur _interpreteur;
+    public Diffuseur diffuseur;
+    public JTextArea historique;
 
     public CalculatriceGUI(IInterpreteur interpreteur) {
         initComponents();
         _interpreteur = interpreteur;
+        this.diffuseur = new Diffuseur("sauvegarder", "supprimer");
+        historique = jTextArea2;
     }
 
     /**
@@ -60,6 +66,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
         jButton25 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         jButton23.setText(")");
         jButton23.setPreferredSize(new java.awt.Dimension(73, 25));
@@ -223,9 +230,17 @@ public class CalculatriceGUI extends javax.swing.JFrame {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Historique:");
+        jTextArea2.setText("Historique:\n");
         jTextArea2.setToolTipText("googl");
         jScrollPane2.setViewportView(jTextArea2);
+
+        jButton2.setText("Supprimer historique");
+        jButton2.setToolTipText("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerHistorique(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,13 +294,17 @@ public class CalculatriceGUI extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(15, 15, 15)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
@@ -331,6 +350,11 @@ public class CalculatriceGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void supprimerHistorique(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerHistorique
+        jTextArea2.setText("Historique: \n");
+        diffuseur.notifier("supprimer", "");
+    }//GEN-LAST:event_supprimerHistorique
 
     private void ajouterAddition(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterAddition
         jTextArea1.append("+");
@@ -405,8 +429,17 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }// GEN-LAST:event_ajouterPoint
 
     private void egale(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_egale
-        IExpression calcul = _interpreteur.parse(jTextArea1.getText());
-        jTextArea1.setText(Double.toString(calcul.interpreter()));
+        try
+        {
+            IExpression calcul = _interpreteur.parse(jTextArea1.getText());
+            diffuseur.notifier("sauvegarder", jTextArea1.getText());
+            // jTextArea2.append(jTextArea1.getText());
+            jTextArea1.setText(Double.toString(calcul.interpreter()));
+        }
+        catch (Exception e)
+        {
+            jTextArea1.setText("Erreur, expression invalide: " + e.getMessage());
+        }
     }// GEN-LAST:event_egale
 
     /**
@@ -465,6 +498,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
