@@ -401,7 +401,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_supprimerHistorique
 
     private void effacer(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_effacer
-        // TODO add your handling code here:
+        jTextArea1.setText("");
     }//GEN-LAST:event_effacer
 
     private void ajouterDivision(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterDivision
@@ -409,7 +409,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ajouterDivision
 
     private void analyser(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analyser
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Analyse des données !");
     }//GEN-LAST:event_analyser
 
     private void ajouterAddition(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterAddition
@@ -437,7 +437,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }// GEN-LAST:event_parentheseFermee
 
     private void affecterVariable(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterDivision
-
+        jTextArea1.append("-->");
     }// GEN-LAST:event_ajouterDivision
 
     private void ajouter8(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouter8
