@@ -165,7 +165,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton16.setText("-->");
+        jButton16.setText(">");
         jButton16.setToolTipText("Affecter une variable");
         jButton16.setPreferredSize(new java.awt.Dimension(73, 25));
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +252,9 @@ public class CalculatriceGUI extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        // new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>());
         jComboBox2.setToolTipText("Les variables");
 
         jLabel1.setText("Les variables");
@@ -437,7 +439,7 @@ public class CalculatriceGUI extends javax.swing.JFrame {
     }// GEN-LAST:event_parentheseFermee
 
     private void affecterVariable(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouterDivision
-        jTextArea1.append("-->");
+        jTextArea1.append(">");
     }// GEN-LAST:event_ajouterDivision
 
     private void ajouter8(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ajouter8

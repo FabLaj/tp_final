@@ -29,9 +29,15 @@ public class Interpreteur implements IInterpreteur {
                     return new Multiplication(parse(operande1), parse(operande2));
                 case '/':
                     return new Division(parse(operande1), parse(operande2));
+                case '>':
+                    return new Affectation(parse(operande1), parse(operande2));
                 default:
                     throw new ArithmeticException("Expression invalide: opérateur inconnu " + expr.charAt(opIndex));
             }
+        }
+        if(expr.getClass().equals(String.class))
+        {
+            return null;
         }
         return new Nombre(Double.parseDouble(expr));
     }
@@ -56,6 +62,7 @@ public class Interpreteur implements IInterpreteur {
                 case ')':
                     --niveauParantheses;
                     break;
+                case '>':
                 case '+':
                 case '-':
                     if (niveauParantheses == 0) {
