@@ -9,8 +9,8 @@ public class Nombre implements IExpression {
     }
 
     @Override
-    public double interpreter() {
-        return _nb;
+    public String interpreter() {
+        return Double.toString(_nb);
     }
 
 }

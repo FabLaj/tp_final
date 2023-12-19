@@ -1,6 +1,12 @@
 package interpreteur_math;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Interpreteur implements IInterpreteur {
+
+    HashMap<IExpression, IExpression> lesVariables = new HashMap<IExpression, IExpression>();
+
     public Interpreteur() {
     }
 
@@ -30,16 +36,34 @@ public class Interpreteur implements IInterpreteur {
                 case '/':
                     return new Division(parse(operande1), parse(operande2));
                 case '>':
-                    return new Affectation(parse(operande1), parse(operande2));
+                    Nombre nb = new Nombre(Double.parseDouble(parse(operande2).interpreter()));
+                    lesVariables.put(parse(operande1), nb);
+                    return nb;
                 default:
                     throw new ArithmeticException("Expression invalide: opérateur inconnu " + expr.charAt(opIndex));
             }
         }
-        if(expr.getClass().equals(String.class))
-        {
-            return null;
+        try {
+            Double.parseDouble(expr);
+            return new Nombre(Double.parseDouble(expr));
+        } catch (Exception e) {
+            String var;
+            // Boolean contientCle = lesVariables.toString().containsKey(expr);
+            // if (contientCle) {
+            // var = lesVariables.get(expr).toString();
+            // } else {
+            // var = expr;
+            // }
+            var = expr;
+            for (Map.Entry<IExpression, IExpression> entry : lesVariables.entrySet()) {
+                String cle = entry.getKey().interpreter();
+                if (cle.equals(expr)) {
+                    var = entry.getValue().interpreter();
+                }
+            }
+            return new Variable(var);
         }
-        return new Nombre(Double.parseDouble(expr));
+
     }
 
     // Retourne l'index du caractère de l'opérateur (ou au début de l'opérateur s'il

@@ -8,8 +8,8 @@ public class Division extends Expression {
     }
 
     @Override
-    public double interpreter() {
-        return _a.interpreter() / _b.interpreter();
+    public String interpreter() {
+        return Double.toString(Double.parseDouble(_a.interpreter()) / Double.parseDouble(_b.interpreter()));
     }
 
 }

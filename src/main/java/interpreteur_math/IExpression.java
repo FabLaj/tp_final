@@ -9,5 +9,5 @@ package interpreteur_math;
  * @author Etudiant
  */
 public interface IExpression {
-    public double interpreter();
+    public String interpreter();
 }

@@ -1,0 +1,4 @@
+69*(3-2)/0.2
+jacob>23
+23.0+(jacob*2)
+jacob>jacob*2

@@ -11,8 +11,8 @@ public class Affectation implements IExpression {
     }
 
     @Override
-    public double interpreter() {
-        return 0.2;
+    public String interpreter() {
+        return "";
     }
 
 }

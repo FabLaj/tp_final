@@ -17,14 +17,14 @@ import observateur.SupprimerSauvegarde;
  * @author Etudiant
  */
 
-//Le premier patron que j'ai utilisé c'est l'interpréteur
-//Les classes concernés sont:
-//IInterpreteur
-//Interpreteur
-//IExpression
-//Expression
-//Addition, Soustraction, Multiplication, Division
-//Nombre
+// Le premier patron que j'ai utilisé c'est l'interpréteur
+// Les classes concernés sont:
+// IInterpreteur
+// Interpreteur
+// IExpression
+// Expression
+// Addition, Soustraction, Multiplication, Division
+// Nombre
 
 public class Tp_final {
 
