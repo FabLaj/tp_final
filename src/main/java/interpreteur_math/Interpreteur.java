@@ -3,11 +3,17 @@ package interpreteur_math;
 import java.util.HashMap;
 import java.util.Map;
 
+import observateur.Diffuseur;
+import tp_final.StockageVariable;
+
 public class Interpreteur implements IInterpreteur {
 
-    HashMap<IExpression, IExpression> lesVariables = new HashMap<IExpression, IExpression>();
+    // Je sais pas si faut je le garde
+    StockageVariable _variables;
+    // IExpression>();
 
-    public Interpreteur() {
+    public Interpreteur(StockageVariable variables) {
+        _variables = variables;
     }
 
     @Override
@@ -36,9 +42,7 @@ public class Interpreteur implements IInterpreteur {
                 case '/':
                     return new Division(parse(operande1), parse(operande2));
                 case '>':
-                    Nombre nb = new Nombre(Double.parseDouble(parse(operande2).interpreter()));
-                    lesVariables.put(parse(operande1), nb);
-                    return nb;
+                    return new Affectation(operande1, parse(operande2), _variables._variables);
                 default:
                     throw new ArithmeticException("Expression invalide: opérateur inconnu " + expr.charAt(opIndex));
             }
@@ -47,21 +51,7 @@ public class Interpreteur implements IInterpreteur {
             Double.parseDouble(expr);
             return new Nombre(Double.parseDouble(expr));
         } catch (Exception e) {
-            String var;
-            // Boolean contientCle = lesVariables.toString().containsKey(expr);
-            // if (contientCle) {
-            // var = lesVariables.get(expr).toString();
-            // } else {
-            // var = expr;
-            // }
-            var = expr;
-            for (Map.Entry<IExpression, IExpression> entry : lesVariables.entrySet()) {
-                String cle = entry.getKey().interpreter();
-                if (cle.equals(expr)) {
-                    var = entry.getValue().interpreter();
-                }
-            }
-            return new Variable(var);
+            return new Variable(expr, _variables._variables);
         }
 
     }

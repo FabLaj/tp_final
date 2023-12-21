@@ -5,12 +5,14 @@
 
 package tp_final;
 
+import java.util.HashMap;
+
 import interpreteur_math.IInterpreteur;
 import interpreteur_math.Interpreteur;
 import observateur.AffichageHistorique;
 import observateur.Diffuseur;
 import observateur.SauvegardeHistorique;
-import observateur.SupprimerSauvegarde;
+// import observateur.SupprimerSauvegarde;
 
 /**
  *
@@ -29,14 +31,9 @@ import observateur.SupprimerSauvegarde;
 public class Tp_final {
 
     public static void main(String[] args) {
-        IInterpreteur interpreteur = new Interpreteur();
-        CalculatriceGUI calcul = new CalculatriceGUI(interpreteur);
+        StockageVariable variables = new StockageVariable();
         String nomFichier = "sauvegarde.txt";
-        calcul.diffuseur.abonnement("sauvegarder", new SauvegardeHistorique(nomFichier));
-        AffichageHistorique histo = new AffichageHistorique(calcul.historique, nomFichier);
-        histo.update("");
-        calcul.diffuseur.abonnement("sauvegarder", histo);
-        calcul.diffuseur.abonnement("supprimer", new SupprimerSauvegarde(nomFichier));
+        CalculatriceGUI calcul = new CalculatriceGUI(variables, nomFichier);
         calcul.setVisible(true);
     }
 }

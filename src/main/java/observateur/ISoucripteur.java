@@ -1,5 +1,5 @@
 package observateur;
 
 public interface ISoucripteur {
-    public void update(String expression);
+    public void update(Historique histo);
 }

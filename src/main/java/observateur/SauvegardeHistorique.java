@@ -10,25 +10,19 @@ public class SauvegardeHistorique implements ISoucripteur {
     File _fichier;
     FileWriter writer;
 
-    public SauvegardeHistorique(String nomFichier)
-    {
+    public SauvegardeHistorique(String nomFichier) {
         _fichier = new File(nomFichier);
     }
 
     @Override
-    public void update(String expression) {
-        System.out.println("sauvegarde dans le fichier " + _fichier.getName() + " l'expression suivante :" + expression);
-
+    public void update(Historique historique) {
         try {
-            Scanner sc = new Scanner(_fichier);
             String texte = "";
-            while(sc.hasNextLine())
-            {
-                texte += sc.nextLine() + "\n";
-            }
-            sc.close();
             writer = new FileWriter(_fichier);
-            writer.write(texte + expression);
+            for (String ligne : historique._historique) {
+                texte += ligne + "\n";
+            }
+            writer.write(texte);
             writer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block

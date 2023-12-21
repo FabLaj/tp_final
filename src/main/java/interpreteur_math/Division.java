@@ -1,6 +1,6 @@
 package interpreteur_math;
 
-public class Division extends Expression {
+public class Division extends OperateurBinaire {
 
     public Division(IExpression a, IExpression b) {
         _a = a;
@@ -8,8 +8,8 @@ public class Division extends Expression {
     }
 
     @Override
-    public String interpreter() {
-        return Double.toString(Double.parseDouble(_a.interpreter()) / Double.parseDouble(_b.interpreter()));
+    public Double interpreter() {
+        return _a.interpreter() / _b.interpreter();
     }
 
 }

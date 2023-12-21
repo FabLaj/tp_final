@@ -3,28 +3,22 @@ package observateur;
 import java.util.*;
 
 public class Diffuseur {
-    Map<String, List<ISoucripteur>> souscripteurs = new HashMap<>();
+    List<ISoucripteur> souscripteurs = new ArrayList<>();
 
-    public Diffuseur(String... operations) {
-        for (String operation : operations) {
-            this.souscripteurs.put(operation, new ArrayList<>());
-        }
+    // public Diffuseur() {
+    // }
+
+    public void abonnement(ISoucripteur s) {
+        souscripteurs.add(s);
     }
 
-    public void abonnement(String type, ISoucripteur s) {
-        List<ISoucripteur> abonnees = souscripteurs.get(type);
-        abonnees.add(s);
+    public void desabonnement(ISoucripteur s) {
+        souscripteurs.remove(s);
     }
 
-    public void desabonnement(String type, ISoucripteur s) {
-        List<ISoucripteur> abonnees = souscripteurs.get(type);
-        abonnees.add(s);
-    }
-
-    public void notifier(String type, String expression) {
-        List<ISoucripteur> abonnees = souscripteurs.get(type);
-        for (ISoucripteur s : abonnees) {
-            s.update(expression);
+    protected void notifier(Historique historique) {
+        for (ISoucripteur s : souscripteurs) {
+            s.update(historique);
         }
     }
 
